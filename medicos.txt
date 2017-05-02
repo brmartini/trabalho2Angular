@@ -1,0 +1,32 @@
+﻿[
+  {
+	"CRM": "015486",
+	"NOME": "Aderbal Pimenta",
+	"ESPECIALIDADE": "ORTOPEDISTA"
+
+  },
+
+  {
+	"CRM": "785412",
+	"NOME": "Asdrubal da Silva",
+	"ESPECIALIDADE": "ORTOPEDISTA"
+	
+
+  },
+
+  {
+	"CRM": "795442",
+	"NOME": "Giovanildo Fernandes",
+	"ESPECIALIDADE": "DERMATOLOGISTA"
+	
+
+  },
+
+  {
+	"CRM": "725415",
+	"NOME": "Araci Fernandes",
+	"ESPECIALIDADE": "DERMATOLOGISTA"
+	
+
+  }
+]

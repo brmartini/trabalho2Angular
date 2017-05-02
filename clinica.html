@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultorio</title>
+
+</head>
+<body ng-app="appConsultorio">
+    <h2>Consultorio FIAP</h2>
+    <div>
+        <ul>
+            <li><a href="#/medico">Medicos</a></li>
+            <li><a href="#/agenda">Agenda</a></li>
+            <li><a href="#/tratamentos">Tratamentos</a></li>
+        </ul>
+        <hr />
+    </div>
+    <div class="borda" ng-view></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+    <script type="text/javascript">
+        angular.module('appConsultorio', ['ngRoute'])
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider
+                    .when('/', {
+                        template: '<h2>Página Inicial</h2>'
+                    })
+                    .when('/medico', {
+                        templateUrl: 'medicos.html'
+                    })
+                    .when('/agenda', {
+                        templateUrl: 'agenda.html'
+                    })
+                    .when('/tratamentos', {
+                        templateUrl: 'tratamentos.html'
+                    })
+                    .otherwise({ redirectTo: '/' });
+            }])
+            .controller('MedicosCtl', ['$http',function ($http) {
+                var self = this;
+                self.medicos = [];
+
+                $http.get('medicos.txt').then(function (response) {
+
+                    self.medicos = response.data;
+                }, function (error) {
+                    alert('Erro:' + error);
+                    })
+            }])
+            .controller('TratamentosCtl', [function () {
+                var self = this;
+                self.tratamentos = [
+                    { Codigo: 'ACUP001', Descricao: 'Acupuntura simples', Duracao: '1h' },
+                    { Codigo: 'FISIO001', Descricao: 'Fisioterapia membors inferiores', Duracao: '2h' },
+                    { Codigo: 'RPG001', Descricao: 'RPG', Duracao: '1h30m' },
+                    { Codigo: 'ELE001', Descricao: 'Eletrocauterização', Duracao: '10m' },
+                    { Codigo: 'LAS001', Descricao: 'Remoação de verruga, a Laser', Duracao: '1h30m' }
+
+
+                ];
+
+            }])
+            .controller('AgendaCtl', [function () {
+                var self = this;
+            }])
+    </script>
+</body>
+</html>

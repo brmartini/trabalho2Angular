@@ -1,0 +1,33 @@
+﻿<div ng-controller="AgendaCtl as ctl">
+    <label>Data: </label>
+    <input type="date" />
+
+    <label>Hora: </label>
+    <input type="time" />
+
+    <label>Convênio</label>
+    <input type="radio" />
+    <label>Particular</label>
+    <input type="radio" />
+    <br />
+    <br />
+</div>
+
+<div ng-controller="TratamentosCtl as ctl">
+
+    <select>
+
+        <option ng-repeat="tratamento in ctl.tratamentos">{{tratamento.Descricao}}</option>
+    </select>
+
+
+</div>
+<br />
+<br />
+<div ng-controller="MedicosCtl as ctl">
+    <select>
+        <option ng-repeat="medico in ctl.medicos">{{medico.NOME}}</option>
+    </select>
+    <label></label>
+</div>
+
