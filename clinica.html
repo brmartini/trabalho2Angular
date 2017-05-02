@@ -61,6 +61,10 @@
             }])
             .controller('AgendaCtl', [function () {
                 var self = this;
+
+                self.confirmaAgenda = function () {
+                    alert($filter(self.hora)(date,format,shortime) + '' + self.data + '' + self.tratamento);
+                };
             }])
     </script>
 </body>

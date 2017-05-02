@@ -1,33 +1,45 @@
 ﻿<div ng-controller="AgendaCtl as ctl">
-    <label>Data: </label>
-    <input type="date" />
-
-    <label>Hora: </label>
-    <input type="time" />
-
-    <label>Convênio</label>
-    <input type="radio" />
-    <label>Particular</label>
-    <input type="radio" />
+    <label>
+        Data:
+        <input type="text" ng-model="ctl.data" />
+    </label><br />
+    <label>
+        Hora:
+        <input type="text" ng-model="ctl.hora" />
+        
+    </label>
+    <label>
+        <input type="radio" name="convenio"
+           ng-model="ctl.convenio" value="convenio" />Convênio
+    </label>
+    
+    <label>
+        <input type="radio" name="particular"
+               ng-model="ctl.particular" value="particular" />Particular
+    </label>
     <br />
     <br />
-</div>
-
-<div ng-controller="TratamentosCtl as ctl">
-
-    <select>
-
-        <option ng-repeat="tratamento in ctl.tratamentos">{{tratamento.Descricao}}</option>
-    </select>
 
 
-</div>
-<br />
-<br />
-<div ng-controller="MedicosCtl as ctl">
-    <select>
-        <option ng-repeat="medico in ctl.medicos">{{medico.NOME}}</option>
-    </select>
-    <label></label>
+    <div ng-controller="TratamentosCtl as ctl">
+
+        <select ng-model="ctl.tratamento"
+                ng-options="t.Descricao for t in ctl.tratamentos"></select>
+
+
+    </div>
+    <br />
+    <br />
+    <div ng-controller="MedicosCtl as ctl">
+        <select ng-model="ctl.medico"
+                ng-options="m.NOME for m in ctl.medicos"></select>
+
+    </div>
+    <br />
+    <br />
+    <button ng-click="ctl.confirmaAgenda()">Confirmar agendamento</button>
+
+
+
 </div>
 
