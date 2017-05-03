@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Consultorio</title>
-
 </head>
 <body ng-app="appConsultorio">
     <h2>Consultorio FIAP</h2>
@@ -17,6 +16,7 @@
     <div class="borda" ng-view></div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+    <!--<script src="moment.js"></script>-->
     <script type="text/javascript">
         angular.module('appConsultorio', ['ngRoute'])
             .config(['$routeProvider', function ($routeProvider) {
@@ -35,7 +35,7 @@
                     })
                     .otherwise({ redirectTo: '/' });
             }])
-            .controller('MedicosCtl', ['$http',function ($http) {
+            .controller('MedicosCtl', ['$http', function ($http) {
                 var self = this;
                 self.medicos = [];
 
@@ -44,7 +44,7 @@
                     self.medicos = response.data;
                 }, function (error) {
                     alert('Erro:' + error);
-                    })
+                })
             }])
             .controller('TratamentosCtl', [function () {
                 var self = this;
@@ -59,11 +59,21 @@
                 ];
 
             }])
-            .controller('AgendaCtl', [function () {
+            .controller('AgendaCtl', ['$scope', '$filter', function ($scope, $filter) {
                 var self = this;
 
                 self.confirmaAgenda = function () {
-                    alert(self.hora + '' + self.data);
+                    //var datahora = moment(self.data+" "+self.hora )//new Date(self.data);
+                    var vdata = $filter('date')(self.data, 'dd/MM/yyyy');
+                    var vhora = $filter('date')(self.hora, 'HH:mm');
+                    if (self.data == null || self.hora == null) {
+                        alert('Você deve preencher os campos de data e hora, para prosseguir');
+                    } else {
+                        if (confirm('Agendamento Efetuado com Sucesso!! \n\nData : ' + vdata + '\nHorário:' + vhora + '\n\n Você Confirma essa data e hora ?')) {
+
+                            window.open('/clinica.html', '_self');
+                        }
+                    }
                 };
             }])
     </script>

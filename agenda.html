@@ -1,18 +1,18 @@
 ﻿<div ng-controller="AgendaCtl as ctl">
     <label>
         Data:
-        <input type="text" ng-model="ctl.data" />
+        <input type="date" ng-model="ctl.data" required>
     </label><br />
     <label>
         Hora:
-        <input type="text" ng-model="ctl.hora" />
-        
+        <input type="time" ng-model="ctl.hora" required>
+
     </label>
     <label>
         <input type="radio" name="convenio"
-           ng-model="ctl.convenio" value="convenio" />Convênio
+               ng-model="ctl.convenio" value="convenio" />Convênio
     </label>
-    
+
     <label>
         <input type="radio" name="particular"
                ng-model="ctl.particular" value="particular" />Particular
@@ -20,12 +20,9 @@
     <br />
     <br />
 
-
     <div ng-controller="TratamentosCtl as ctl">
-
         <select ng-model="ctl.tratamento"
                 ng-options="t.Descricao for t in ctl.tratamentos"></select>
-
 
     </div>
     <br />
@@ -33,13 +30,9 @@
     <div ng-controller="MedicosCtl as ctl">
         <select ng-model="ctl.medico"
                 ng-options="m.NOME for m in ctl.medicos"></select>
-
     </div>
     <br />
     <br />
     <button ng-click="ctl.confirmaAgenda()">Confirmar agendamento</button>
 
-
-
 </div>
-
